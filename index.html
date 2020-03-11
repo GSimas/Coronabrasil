@@ -33,12 +33,16 @@
           console.log(casos_br);
           
           var para = document.createElement("p");
+          var link = document.createElement("a");
           var para2 = document.createElement("p");
           var node = document.createTextNode(casos_br);
           var node2 = document.createTextNode("Atualizado em " + data);
           var linebreak = document.createElement("br");
           var node3 = document.createTextNode("(atualizado 1 vez por dia)");
-          para.appendChild(node);
+          link.appendChild(node);
+          link.setAttribute("href", "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/");
+          link.setAttribute("target", "blank");
+          para.appendChild(link);
           para2.appendChild(node2);
           para2.appendChild(linebreak);
           para2.appendChild(node3);
