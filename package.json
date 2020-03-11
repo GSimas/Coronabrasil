@@ -1,31 +1,41 @@
 {
-  "name": "coronabrasil",
-  "version": "1.0.0",
-  "description": "covid19 cases",
-  "repository": "Coronabrasil",
-  "main": "index.js",
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
-    "axios": "^0.19.2",
-    "babel": "^6.23.0",
+    "browserify": "^16.5.0",
     "cheerio": "^1.0.0-rc.3",
+    "crawler-request": "^1.2.2",
+    "fs": "^0.0.1-security",
     "moment": "^2.24.0",
-    "nightmare": "^3.0.2",
-    "puppeteer": "^2.1.1",
+    "pdf-parse": "^1.1.1",
+    "pdfjs": "^2.3.4",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
-    "requests": "^0.3.0",
-    "yarn": "^1.22.0"
+    "uniq": "^1.0.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
+  "name": "coronabrasil",
+  "description": "quantos corona no brasil",
+  "version": "1.0.0",
+  "main": "index.js",
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-loader": "^8.0.6"
   },
   "scripts": {
-    "dev": "babel -w ./index.js -o ./bundle.js",
+    "dev": "webpack-dev-server --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSimas/Coronabrasil.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSimas/Coronabrasil/issues"
+  },
+  "homepage": "https://github.com/GSimas/Coronabrasil#readme"
 }
