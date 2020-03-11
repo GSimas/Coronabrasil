@@ -10,7 +10,7 @@
 
 <body>
   
-  <div align="center" id="div1">
+  <div class="center" id="div1">
     
     <h1>Coronavírus está no Brasil?</h1>
     
@@ -36,8 +36,12 @@
           var para2 = document.createElement("p");
           var node = document.createTextNode(casos_br);
           var node2 = document.createTextNode("Atualizado em " + data);
+          var linebreak = document.createElement("br");
+          var node3 = document.createTextNode("(atualizado 1 vez por dia)");
           para.appendChild(node);
           para2.appendChild(node2);
+          para2.appendChild(linebreak);
+          para2.appendChild(node3);
 
           var elem = document.querySelector('#loading');
           elem.parentNode.removeChild(elem);
