@@ -10,14 +10,14 @@
   
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47290814-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-47290814-2');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47290814-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-47290814-2');
+  </script>
   
   
   
@@ -36,54 +36,96 @@
       
       <h1>Quantos?</h1>
       
-      <p class="p02" id="loading">Carregando...</p>
-      </div>
+      <p class="p02" id="loading1">Carregando...</p>
       
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-      <script>
-                
-        axios.get('https://coronavirus-tracker-api.herokuapp.com/confirmed')
-        .then(function (response) {
-
-          var casos_br = response.data.locations.find(x => x.country_code === "BR").latest;
-          var day = moment(response.data.last_updated.substring(0,10)).subtract(1,'days').format("DD/MM/YYYY");
-          console.log(casos_br);
-          
-          var para = document.createElement("p");
-          var link = document.createElement("a");
-          var para2 = document.createElement("p");
-          var node = document.createTextNode(casos_br);
-          var node2 = document.createTextNode("Atualizado em " + day);
-          var linebreak = document.createElement("br");
-          var node3 = document.createTextNode("(atualizado 1 vez por dia)");
-          link.appendChild(node);
-          link.setAttribute("href", "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/");
-          link.setAttribute("target", "blank");
-          para.appendChild(link);
-          para2.appendChild(node2);
-          para2.appendChild(linebreak);
-          para2.appendChild(node3);
-
-          var elem = document.querySelector('#loading');
-          elem.parentNode.removeChild(elem);
-          
-          var element = document.getElementById("div1");
-          var child = document.getElementById("p02");
-          var child2 = document.getElementById("p02");
-          element.insertBefore(para, child);
-          element.insertBefore(para2, child2);
-          para.classList.add("p02");
-          
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        
-        url = "https://coronavirus-tracker-api.herokuapp.com/confirmed";
-        
-      </script>
       
-    </body>
+    </div>
     
-    </html>
+    <div class="center" id="div2">
+
+      <h1>Mortos:</h1>
+
+      <p class="p02" id="loading2">Carregando...</p>
+
+    </div>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script>
+      
+      axios.get('https://coronavirus-tracker-api.herokuapp.com/confirmed')
+      .then(function (response) {
+        
+        var casos_br = response.data.locations.find(x => x.country_code === "BR").latest;
+        var day = moment(response.data.last_updated.substring(0,10)).subtract(1,'days').format("DD/MM/YYYY");
+        console.log(casos_br);
+        
+        var para = document.createElement("p");
+        var link = document.createElement("a");
+        var node_casos = document.createTextNode(casos_br);
+        
+        link.appendChild(node_casos);
+        link.setAttribute("href", "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/");
+        link.setAttribute("target", "blank");
+        para.appendChild(link);
+        
+        var elem = document.querySelector('#loading1');
+        elem.parentNode.removeChild(elem);
+        
+        var element = document.getElementById("div1");
+        var child = document.getElementById("#loading1");
+        var child2 = document.getElementById("#loading1");
+        element.insertBefore(para, child);  
+        para.classList.add("p02");
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
+      axios.get('https://coronavirus-tracker-api.herokuapp.com/deaths')
+      .then(function (response) {
+        var mortes_br = response.data.locations.find(x => x.country_code === "BR").latest;
+        var day = moment(response.data.last_updated.substring(0,10)).subtract(1,'days').format("DD/MM/YYYY");
+        console.log(mortes_br);
+        
+        var para = document.createElement("p");
+        var link = document.createElement("a");
+        var para2 = document.createElement("p");
+        var node_mortes = document.createTextNode(mortes_br);
+        var node_atualizacao = document.createTextNode("Atualizado em " + day);
+        var linebreak = document.createElement("br");
+        var node_atualizacao2 = document.createTextNode("(atualizado 1 vez por dia)");
+        
+        link.appendChild(node_mortes);
+        link.setAttribute("href", "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/");
+        link.setAttribute("target", "blank");
+        para.appendChild(link);
+        para2.appendChild(node_atualizacao);
+        para2.appendChild(linebreak);
+        para2.appendChild(node_atualizacao2);
+                
+        var elem = document.querySelector('#loading2');
+        elem.parentNode.removeChild(elem);
+
+        var element = document.getElementById("div2");
+        var child = document.getElementById("#loading2");
+        var child2 = document.getElementById("#loading2");
+        element.insertBefore(para, child);
+        element.insertBefore(para2, child2);
+        para.classList.add("p02");
+        
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
+    </script>
+    
+  </body>
+  
+  </html>
+  
