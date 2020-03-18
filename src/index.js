@@ -1,8 +1,9 @@
-const axios = require('axios');
-const moment = require('moment');
+
 
 axios.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code=BR')
       .then(function (response) {
+
+        console.log("Start");
         
         brazil_data = response.data.locations[0].latest;
         var confirmed_br = brazil_data.confirmed;
@@ -56,6 +57,8 @@ axios.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_co
         para_atualizacao.appendChild(link_corona);
         element_recovered.insertBefore(para_atualizacao, child);
         element_recovered.insertBefore(para_atualizacao, child);
+
+        console.log("End");
         
       })
       .catch(function (error) {
