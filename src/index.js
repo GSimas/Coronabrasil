@@ -8,7 +8,6 @@ axios.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_co
         brazil_data = response.data.locations[0].latest;
         var confirmed_br = brazil_data.confirmed;
         var deaths_br = brazil_data.deaths;
-        var recovered_br = brazil_data.recovered;
         var day = moment().subtract(1,'days').format("DD/MM/YYYY");
         
         var para_confirmed = document.createElement("p");
@@ -18,10 +17,6 @@ axios.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_co
         var para_deaths = document.createElement("p");
         var node_deaths = document.createTextNode(deaths_br);
         para_deaths.appendChild(node_deaths);
-
-        var para_recovered = document.createElement("p");
-        var node_recovered = document.createTextNode(recovered_br);
-        para_recovered.appendChild(node_recovered);
 
         var elem_confirmed = document.querySelector('#loading1');
         elem_confirmed.parentNode.removeChild(elem_confirmed);
@@ -37,13 +32,6 @@ axios.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_co
         element_deaths.insertBefore(para_deaths, child);  
         para_deaths.classList.add("p02");
 
-        var elem_recovered = document.querySelector('#loading3');
-        elem_recovered.parentNode.removeChild(elem_recovered);
-        var element_recovered = document.getElementById("div3");
-        var child = document.getElementById("#loading3");
-        element_recovered.insertBefore(para_recovered, child);  
-        para_recovered.classList.add("p02");  
-
         var para_atualizacao = document.createElement("p");
         var node_atualizacao = document.createTextNode("Atualizado em " + day);
         var linebreak = document.createElement("br");
@@ -55,8 +43,8 @@ axios.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_co
         link_corona.appendChild(linebreak);
         link_corona.appendChild(node_atualizacao2);
         para_atualizacao.appendChild(link_corona);
-        element_recovered.insertBefore(para_atualizacao, child);
-        element_recovered.insertBefore(para_atualizacao, child);
+        element_deaths.insertBefore(para_atualizacao, child);
+        element_deaths.insertBefore(para_atualizacao, child);
 
         console.log("End");
         
