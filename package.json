@@ -7,7 +7,7 @@
     "cheerio": "^1.0.0-rc.3",
     "crawler-request": "^1.2.2",
     "fs": "^0.0.1-security",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "pdf-parse": "^1.1.1",
     "pdfjs": "^2.3.4",
     "request": "^2.88.2",
